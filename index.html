@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <title>麻雀点棒移交计算</title>
+  </head>
+  <body>
+
+    <h1 class="text-center" style="margin: 48px;">麻雀点棒移交计算</h1>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <h3 class="card-header text-center bg-gray">点棒数量</h3>
+            <div class="card-body">
+
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="input-group">
+                    <input type="text" class="form-control player-name" id="player1" value="玩家A"/>
+                    <input type="text" class="form-control" id="points1" value="25000"/>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="input-group">
+                    <input type="text" class="form-control player-name" id="player2" value="玩家B"/>
+                    <input type="text" class="form-control" id="points2" value="25000"/>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="input-group">
+                    <input type="text" class="form-control player-name" id="player3" value="玩家C"/>
+                    <input type="text" class="form-control" id="points3" value="25000"/>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="input-group">
+                    <input type="text" class="form-control player-name" id="player4" value="玩家D"/>
+                    <input type="text" class="form-control" id="points4" value="25000"/>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 btn-group">
+                  <button class="btn btn-primary" onclick="setPoints()">设置点棒</button>
+                  <button class="btn btn-info" onclick="setPlayers()">设置玩家名字</button>
+                  <button class="btn btn-success" onclick="recordHistory()">记录点棒数到历史</button>
+                  <button class="btn btn-warning" onclick="resetPoints()">重置点棒</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <h3 class="card-header text-center bg-gray">点棒移交</h3>
+            <div class="card-body">
+
+              <div class="row">
+                <div class="col-md-2"><h4 class="text-center">支付者</h4></div>
+                <div class="col-md-10 btn-group" role="group">
+                  <input type="radio" class="btn-check" name="payer" id="payer1" value="1" autocomplete="off" checked>
+                  <label class="btn btn-outline-primary" for="payer1" id="payerlabel1">玩家A</label>
+
+                  <input type="radio" class="btn-check" name="payer" id="payer2" value="2" autocomplete="off">
+                  <label class="btn btn-outline-primary" for="payer2" id="payerlabel2">玩家B</label>
+
+                  <input type="radio" class="btn-check" name="payer" id="payer3" value="3" autocomplete="off">
+                  <label class="btn btn-outline-primary" for="payer3" id="payerlabel3">玩家C</label>
+
+                  <input type="radio" class="btn-check" name="payer" id="payer4" value="4" autocomplete="off">
+                  <label class="btn btn-outline-primary" for="payer4" id="payerlabel4">玩家D</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-2"><h4 class="text-center">收取者</h4></div>
+                <div class="col-md-10 btn-group" role="group">
+                  <input type="radio" class="btn-check" name="receiver" id="receiver1" value="1" autocomplete="off" checked>
+                  <label class="btn btn-outline-success" for="receiver1" id="receiverlabel1">玩家A</label>
+
+                  <input type="radio" class="btn-check" name="receiver" id="receiver2" value="2" autocomplete="off">
+                  <label class="btn btn-outline-success" for="receiver2" id="receiverlabel2">玩家B</label>
+
+                  <input type="radio" class="btn-check" name="receiver" id="receiver3" value="3" autocomplete="off">
+                  <label class="btn btn-outline-success" for="receiver3" id="receiverlabel3">玩家C</label>
+
+                  <input type="radio" class="btn-check" name="receiver" id="receiver4" value="4" autocomplete="off">
+                  <label class="btn btn-outline-success" for="receiver4" id="receiverlabel4">玩家D</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 input-group" role="group">
+                  <label class="input-group-text" for="pay_points">支付点数</label>
+                  <input type="text" class="form-control" id="pay_points" value="1000">
+                  <button class="btn btn-warning" type="button" onclick="payPoints()">支付</button>
+                </div>
+              </div>
+
+              <div class="row" id="quick_points">
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <h3 class="card-header text-center bg-gray">对局历史</h3>
+            <div class="card-body">
+      
+              <pre class="show-scroll" id="show_history"></pre>
+              <pre id="show_pt"></pre>
+              <button class="btn btn-primary" onclick="calcPt()">计算pt</button>
+              <button class="btn btn-danger" onclick="clearHistory()">清空历史</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./js/main.js"></script>
+
+    <style type="text/css">
+      span.avg-input-width {
+        width: 5%;
+      }
+      div.row {
+        margin-top: 16px;
+      }
+      input.player-name {
+        background: lightskyblue;
+      }
+      body {
+        padding-bottom: 80px;
+      }
+      pre.show-scroll {
+        overflow-x: auto;
+        white-space: pre;
+        word-wrap: normal;
+      }
+    </style>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        initPoints();
+      })
+    </script>
+  </body>
+</html>
