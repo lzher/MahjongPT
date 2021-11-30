@@ -11,7 +11,7 @@ function initPoints() {
 
     quick_points = [300, 400, 500, 700, 800, 1000, 1300,
                     1500, 1600, 2000, 2400, 2600, 2900,
-                    3200, 3900, 4000, 4800, 5200, 5800,
+                    3200, 3900, 4000, 4800, 5200, 5800, 6000,
                     6400, 7700, 8000, 9600, 11600, 12000,
                     16000, 18000, 24000, 32000, 36000, 48000,
                     "+100"]
@@ -36,10 +36,11 @@ function setPlayers() {
     data["players"] = players;
     localStorage['mjpoints'] = JSON.stringify(data);
     updateView();
+    alert("设置完成：" + players);
 }
 
 function setPoints() {
-    points = [$("#points1").val(), $("#points2").val(), $("#points3").val(), $("#points4").val()];
+    points = [parseInt($("#points1").val()), parseInt($("#points2").val()), parseInt($("#points3").val()), parseInt($("#points4").val())];
     if (confirm("确定要设置点棒数为 " + points + " 吗？")) {
         data = JSON.parse(localStorage['mjpoints']);
         data["points"] = points;

@@ -22,26 +22,26 @@
               <div class="row">
                 <div class="col-md-3">
                   <div class="input-group">
-                    <input type="text" class="form-control player-name" id="player1" value="玩家A"/>
-                    <input type="text" class="form-control" id="points1" value="25000"/>
+                    <input type="text" class="form-control player-name" id="player1" value="玩家A" onclick="$(this).focus().select()"/>
+                    <input type="text" class="form-control" id="points1" value="25000" onclick="$(this).focus().select()"/>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="input-group">
-                    <input type="text" class="form-control player-name" id="player2" value="玩家B"/>
-                    <input type="text" class="form-control" id="points2" value="25000"/>
+                    <input type="text" class="form-control player-name" id="player2" value="玩家B" onclick="$(this).focus().select()"/>
+                    <input type="text" class="form-control" id="points2" value="25000" onclick="$(this).focus().select()"/>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="input-group">
-                    <input type="text" class="form-control player-name" id="player3" value="玩家C"/>
-                    <input type="text" class="form-control" id="points3" value="25000"/>
+                    <input type="text" class="form-control player-name" id="player3" value="玩家C" onclick="$(this).focus().select()"/>
+                    <input type="text" class="form-control" id="points3" value="25000" onclick="$(this).focus().select()"/>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="input-group">
-                    <input type="text" class="form-control player-name" id="player4" value="玩家D"/>
-                    <input type="text" class="form-control" id="points4" value="25000"/>
+                    <input type="text" class="form-control player-name" id="player4" value="玩家D" onclick="$(this).focus().select()"/>
+                    <input type="text" class="form-control" id="points4" value="25000" onclick="$(this).focus().select()"/>
                   </div>
                 </div>
               </div>
@@ -102,7 +102,7 @@
               <div class="row">
                 <div class="col-md-12 input-group" role="group">
                   <label class="input-group-text" for="pay_points">支付点数</label>
-                  <input type="text" class="form-control" id="pay_points" value="1000">
+                  <input type="text" class="form-control" id="pay_points" value="1000" onclick="$(this).focus().select()">
                   <button class="btn btn-warning" type="button" onclick="payPoints()">支付</button>
                 </div>
               </div>
@@ -130,6 +130,8 @@
           </div>
         </div>
       </div>
+
+      <p class="text-center"><a href="https://fzriichi.com">福州市立直麻将协会</a></p>
 
 
     </div>
